@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int MAXSIZE = 11;
+int MAXSIZE = 5;
 
 struct Node {
 	int data;
@@ -64,15 +64,16 @@ void Delete(int key) {
 	if (temp->data == key) {
 		root[index] = root[index]->next;
 		delete temp;
-		return;
 	}
-
-	while (temp != NULL) {
-		if (temp->data == key) {
-			prev->next = temp->next;
+	else {
+		while (temp != NULL) {
+			if (temp->data == key) {
+				prev->next = temp->next;
+				return;
+			}
+			prev = temp;
+			temp = temp->next;
 		}
-		prev = temp;
-		temp = temp->next;
 	}
 }
 
